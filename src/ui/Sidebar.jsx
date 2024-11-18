@@ -1,6 +1,6 @@
 function Sidebar() {
   return (
-    <aside className="bg-primary-dark">
+    <aside className="">
       <div>Sidebar</div>
     </aside>
   );
