@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import Main from "./Main";
 
 function AppLayout() {
   return (
     <div>
-      <h1>WHAT IS UP</h1>
-      <Outlet />
+      <Header />
+      <Sidebar />
+      <Main>
+        <Outlet />
+      </Main>
     </div>
   );
 }
