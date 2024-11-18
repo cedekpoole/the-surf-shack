@@ -5,11 +5,7 @@ Main.propTypes = {
 };
 
 function Main({ children }) {
-  return (
-    <main className="text-[#f1f1f1] min-h-[92dvh] container mx-auto bg-[#1E272D]">
-      {children}
-    </main>
-  );
+  return <main className="px-4 py-3 bg-[#1E272D]">{children}</main>;
 }
 
 export default Main;

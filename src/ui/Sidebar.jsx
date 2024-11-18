@@ -1,5 +1,9 @@
 function Sidebar() {
-  return <aside>SIDE BAR</aside>;
+  return (
+    <aside>
+      <div className="bg-primary-dark">Sidebar</div>
+    </aside>
+  );
 }
 
 export default Sidebar;

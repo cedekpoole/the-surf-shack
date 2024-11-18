@@ -5,7 +5,7 @@ import Main from "./Main";
 
 function AppLayout() {
   return (
-    <div className="bg-[#556168]">
+    <div className="bg-[#556168] font-montserrat text-stone-50 h-screen">
       <Header />
       <Sidebar />
       <Main>
