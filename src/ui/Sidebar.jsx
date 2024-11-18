@@ -1,7 +1,7 @@
 function Sidebar() {
   return (
-    <aside>
-      <div className="bg-primary-dark">Sidebar</div>
+    <aside className="bg-primary-dark">
+      <div>Sidebar</div>
     </aside>
   );
 }
