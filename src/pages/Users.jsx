@@ -1,5 +1,11 @@
+import PageContainer from "../ui/PageContainer";
+
 function Users() {
-  return <div>Users</div>;
+  return (
+    <PageContainer header="Users">
+      <div>Users</div>
+    </PageContainer>
+  );
 }
 
 export default Users;
