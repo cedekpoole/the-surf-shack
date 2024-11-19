@@ -1,14 +1,11 @@
 import CabinTable from "../features/cabins/CabinTable";
+import PageContainer from "../ui/PageContainer";
 
 function Cabins() {
   return (
-    <div className="p-3">
-      <div className="flex justify-between">
-        <h1 className="text-2xl font-semibold tracking-wide">Cabins</h1>
-        <button>Filter / Sort</button>
-      </div>
+    <PageContainer header="Cabins">
       <CabinTable />
-    </div>
+    </PageContainer>
   );
 }
 
