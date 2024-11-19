@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCabins } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
+import CabinRow from "./CabinRow";
 
 function CabinTable() {
   const {
@@ -21,7 +22,7 @@ function CabinTable() {
     >
       <div
         role="row"
-        className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-2 p-3 items-center uppercase tracking-wide"
+        className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
       >
         <div></div>
         <div>Cabin</div>
@@ -30,6 +31,9 @@ function CabinTable() {
         <div>Discount</div>
         <div></div>
       </div>
+      {cabins.map((cabin) => (
+        <CabinRow key={cabin.id} cabin={cabin} />
+      ))}
     </div>
   );
 }
