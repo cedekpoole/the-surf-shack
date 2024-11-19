@@ -3,7 +3,7 @@ import PageContainer from "../ui/PageContainer";
 
 function Cabins() {
   return (
-    <PageContainer header="Cabins">
+    <PageContainer header="All Cabins">
       <CabinTable />
     </PageContainer>
   );

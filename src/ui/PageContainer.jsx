@@ -7,9 +7,9 @@ PageHeader.propTypes = {
 
 function PageHeader({ children, header }) {
   return (
-    <div className="p-3">
-      <div className="flex justify-between">
-        <h1 className="text-2xl font-semibold tracking-wide">{header}</h1>
+    <div className="p-4">
+      <div className="flex justify-between mb-3">
+        <h1 className="text-3xl font-semibold tracking-wide">{header}</h1>
         <button>Filter / Sort</button>
       </div>
       {children}
