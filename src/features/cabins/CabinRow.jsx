@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { formatCurrency } from "../../utils/helpers";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
@@ -21,8 +22,8 @@ function CabinRow({ cabin }) {
       />
       <div className="font-semibold text-lg tracking-wide">{name}</div>
       <div>Fits up to {maxCapacity} guests</div>
-      <div>{regularPrice}</div>
-      <div>{discount}</div>
+      <div>{formatCurrency(regularPrice)}</div>
+      <div>{formatCurrency(discount)}</div>
     </div>
   );
 }
