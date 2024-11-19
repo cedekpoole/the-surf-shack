@@ -13,9 +13,9 @@ CabinRow.propTypes = {
 function CabinRow({ cabin }) {
   const { image, maxCapacity, name, regularPrice, discount } = cabin;
   return (
-    <div className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center">
+    <div className="bg-[#243037] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center">
       <img
-        className="aspect-square w-12 block rounded-r-md object-cover object-center transform scale-150 translate-x-[-7px]"
+        className="border-r-[1px] aspect-square w-12 block object-cover object-center transform scale-150 translate-x-[-7px]"
         src={image}
         alt="cabin image"
       />
