@@ -18,19 +18,28 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Regular Price">
-        <Input id="regularPrice" type="number" />
+        <Input id="regularPrice" type="number" {...register("regularPrice")} />
       </FormRow>
 
       <FormRow label="Discount">
-        <Input id="discount" type="number" defaultValue={0} />
+        <Input
+          id="discount"
+          type="number"
+          defaultValue={0}
+          {...register("discount")}
+        />
       </FormRow>
 
       <FormRow label="Description for the website">
-        <Input element="textarea" id="description" />
+        <Input
+          element="textarea"
+          id="description"
+          {...register("description")}
+        />
       </FormRow>
 
       <FormRow label="Cabin Photo">
-        <Input id="image" type="file" />
+        <Input id="image" type="file" {...register("image")} />
       </FormRow>
 
       <FormRow>
