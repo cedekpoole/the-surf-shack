@@ -6,12 +6,14 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.oneOf(["button", "submit", "reset"]),
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 function Button({
   children,
   style = "primary",
   type = "button",
+  disabled = false,
   onClick = () => {},
   className = "",
 }) {
@@ -31,6 +33,7 @@ function Button({
       type={type}
       onClick={onClick}
       className={`${styleClasses[style]} ${className}`}
+      disabled={disabled}
     >
       {children}
     </button>
