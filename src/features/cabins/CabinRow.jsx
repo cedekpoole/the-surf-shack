@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import { formatCurrency } from "../../utils/helpers";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteCabin } from "../../services/apiCabins";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
+    id: PropTypes.string,
     image: PropTypes.string,
     maxCapacity: PropTypes.number,
     name: PropTypes.string,
@@ -12,7 +15,26 @@ CabinRow.propTypes = {
 };
 
 function CabinRow({ cabin }) {
-  const { image, maxCapacity, name, regularPrice, discount } = cabin;
+  const {
+    id: cabinId,
+    image,
+    maxCapacity,
+    name,
+    regularPrice,
+    discount,
+  } = cabin;
+
+  const queryClient = useQueryClient();
+
+  const { isPending: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteCabin(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["cabins"],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
   return (
     <div className="bg-[#243037] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center border-b-[1px] border-stone-200">
       <img
@@ -24,7 +46,11 @@ function CabinRow({ cabin }) {
       <div>Fits up to {maxCapacity} guests</div>
       <div>{formatCurrency(regularPrice)}</div>
       <div>{formatCurrency(discount)}</div>
-      <button className="text-accent-dark hover:text-accent-light hover:scale-105">
+      <button
+        className="text-accent-dark hover:text-accent-light hover:scale-105"
+        disabled={isDeleting}
+        onClick={() => mutate(cabinId)}
+      >
         Delete
       </button>
     </div>
