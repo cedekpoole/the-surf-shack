@@ -14,7 +14,7 @@ CabinRow.propTypes = {
 function CabinRow({ cabin }) {
   const { image, maxCapacity, name, regularPrice, discount } = cabin;
   return (
-    <div className="bg-[#243037] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center">
+    <div className="bg-[#243037] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center border-b-[1px] border-stone-200">
       <img
         className="border-r-[1px] aspect-square w-12 block object-cover object-center transform scale-150 translate-x-[-7px]"
         src={image}
@@ -24,6 +24,9 @@ function CabinRow({ cabin }) {
       <div>Fits up to {maxCapacity} guests</div>
       <div>{formatCurrency(regularPrice)}</div>
       <div>{formatCurrency(discount)}</div>
+      <button className="text-accent-dark hover:text-accent-light hover:scale-105">
+        Delete
+      </button>
     </div>
   );
 }
