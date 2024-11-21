@@ -22,9 +22,19 @@ function Input({
   if (textArea) {
     return (
       <textarea
-        className={`${className} px-3 py-2 h-32`}
+        className={`${className} px-3 py-2 h-32 resize-none`}
         id={id}
         disabled={disabled}
+      />
+    );
+  }
+  if (fileInput) {
+    return (
+      <input
+        type={type}
+        id={id}
+        disabled={disabled}
+        className="text-base file:font-medium file:px-3 file:py-2 file:mr-3 file:rounded-md file:border-0 file:text-white file:bg-primary file:cursor-pointer file:transition-colors file:hover:bg-primary-light"
       />
     );
   }
