@@ -7,7 +7,7 @@ FormRow.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]),
 };
 
-function FormRow({ label, error, children, orientation }) {
+function FormRow({ label, error, children, orientation = "horizontal" }) {
   const isVertical = orientation === "vertical";
 
   return (

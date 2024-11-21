@@ -5,7 +5,11 @@ Form.propTypes = {
 };
 
 function Form({ children }) {
-  return <form className="overflow-hidden text-md w-[50rem]">{children}</form>;
+  return (
+    <form className="overflow-hidden text-md w-[50rem] border px-3 bg-[#34434D] rounded-md">
+      {children}
+    </form>
+  );
 }
 
 export default Form;
