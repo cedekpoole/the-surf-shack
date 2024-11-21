@@ -25,11 +25,11 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   }
 
   function onError(errors) {
-    console.error(errors);
+    console.warn("Validation error!", errors);
   }
 
   return (
@@ -38,6 +38,7 @@ function CreateCabinForm() {
         <Input
           id="name"
           type="text"
+          disabled={isCreating}
           {...register("name", {
             required: "Name is required",
           })}
@@ -48,6 +49,7 @@ function CreateCabinForm() {
         <Input
           id="maxCapacity"
           type="number"
+          disabled={isCreating}
           {...register("maxCapacity", {
             required: "Max capacity is required",
             min: {
@@ -66,6 +68,7 @@ function CreateCabinForm() {
         <Input
           id="regularPrice"
           type="number"
+          disabled={isCreating}
           {...register("regularPrice", {
             required: "Price is required",
             min: {
@@ -81,6 +84,7 @@ function CreateCabinForm() {
           id="discount"
           type="number"
           defaultValue={0}
+          disabled={isCreating}
           {...register("discount", {
             required: "Can't be empty, make it at least 0",
             validate: (value) =>
@@ -97,14 +101,22 @@ function CreateCabinForm() {
         <Input
           element="textarea"
           id="description"
+          disabled={isCreating}
           {...register("description", {
             required: "Description is required",
           })}
         />
       </FormRow>
 
-      <FormRow label="Cabin Photo">
-        <Input id="image" type="file" {...register("image")} />
+      <FormRow label="Cabin Photo" error={errors?.image?.message}>
+        <Input
+          id="image"
+          type="file"
+          disabled={isCreating}
+          {...register("image", {
+            required: "Image is required",
+          })}
+        />
       </FormRow>
 
       <FormRow>

@@ -28,6 +28,7 @@ const Input = forwardRef(
           type={type}
           id={id}
           disabled={disabled}
+          accept="image/*"
           className="text-base file:font-medium file:px-3 file:py-2 file:mr-3 file:rounded-md file:border-0 file:text-white file:bg-primary file:cursor-pointer file:transition-colors file:hover:bg-primary-light"
           {...props}
         />
