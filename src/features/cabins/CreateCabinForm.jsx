@@ -1,17 +1,20 @@
+import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 
 function CreateCabinForm() {
+  const { register, handleSubmit } = useForm();
+
   return (
     <Form>
       <FormRow label="Name">
-        <Input id="name" type="text" />
+        <Input id="name" type="text" {...register("name")} />
       </FormRow>
 
       <FormRow label="Maximum Capacity">
-        <Input id="maxCapacity" type="number" />
+        <Input id="maxCapacity" type="number" {...register("maxCapacity")} />
       </FormRow>
 
       <FormRow label="Regular Price">

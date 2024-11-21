@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 Input.propTypes = {
-  type: PropTypes.oneOf(["text", "number"]),
+  type: PropTypes.oneOf(["text", "number", "file"]),
   id: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["input", "textarea"]),
 };
@@ -14,6 +14,7 @@ function Input({
   defaultValue,
   disabled = false,
   element = "input",
+  ...props
 }) {
   const fileInput = type === "file";
   const textArea = element === "textarea";
@@ -25,6 +26,7 @@ function Input({
         className={`${className} px-3 py-2 h-32 resize-none`}
         id={id}
         disabled={disabled}
+        {...props}
       />
     );
   }
@@ -35,6 +37,7 @@ function Input({
         id={id}
         disabled={disabled}
         className="text-base file:font-medium file:px-3 file:py-2 file:mr-3 file:rounded-md file:border-0 file:text-white file:bg-primary file:cursor-pointer file:transition-colors file:hover:bg-primary-light"
+        {...props}
       />
     );
   }
@@ -46,6 +49,7 @@ function Input({
       type={type}
       defaultValue={defaultValue}
       disabled={disabled}
+      {...props}
     />
   );
 }

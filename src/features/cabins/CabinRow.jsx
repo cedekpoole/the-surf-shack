@@ -7,7 +7,7 @@ import { ImBin } from "react-icons/im";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     image: PropTypes.string,
     maxCapacity: PropTypes.number,
     name: PropTypes.string,
