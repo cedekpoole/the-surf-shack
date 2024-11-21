@@ -6,7 +6,7 @@ Form.propTypes = {
 
 function Form({ children }) {
   return (
-    <form className="overflow-hidden text-md w-[50rem] border-[1px] border-[#374151] shadow-md px-3 rounded-md">
+    <form className="overflow-hidden text-md w-[60rem] border-[1px] border-[#374151] shadow-md px-3 rounded-md">
       {children}
     </form>
   );

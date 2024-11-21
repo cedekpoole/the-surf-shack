@@ -23,16 +23,16 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Description for the website">
-        <textarea id="description" />
+        <Input element="textarea" id="description" />
       </FormRow>
 
       <FormRow label="Cabin Photo">
-        <input id="image" type="file" accept="image/*" />
+        <Input id="image" type="file" />
       </FormRow>
 
       <FormRow>
         <div></div>
-        <Button style="secondary" type="reset" className="mr-4">
+        <Button style="secondary" type="reset">
           Cancel
         </Button>
         <Button type="submit" style="primary">
