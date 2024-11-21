@@ -3,12 +3,32 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createCabin } from "../../services/apiCabins";
+import toast from "react-hot-toast";
 
 function CreateCabinForm() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending: isCreating } = useMutation({
+    mutationFn: (cabin) => createCabin(cabin),
+    onSuccess: () => {
+      toast.success("Cabin successfully created!");
+      queryClient.invalidateQueries({
+        queryKey: ["cabins"],
+      });
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  function onSubmit(data) {
+    mutate(data);
+  }
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Name">
         <Input id="name" type="text" {...register("name")} />
       </FormRow>
@@ -47,7 +67,7 @@ function CreateCabinForm() {
         <Button style="secondary" type="reset">
           Cancel
         </Button>
-        <Button type="submit" style="primary">
+        <Button disabled={isCreating} type="submit" style="primary">
           Create Cabin
         </Button>
       </FormRow>
