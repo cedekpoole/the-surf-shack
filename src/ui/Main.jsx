@@ -5,7 +5,7 @@ Main.propTypes = {
 };
 
 function Main({ children }) {
-  return <main className="px-4 py-3 bg-[#1E272D]">{children}</main>;
+  return <main className="px-4 py-5 bg-[#1E272D]">{children}</main>;
 }
 
 export default Main;
