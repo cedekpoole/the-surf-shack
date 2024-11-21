@@ -41,7 +41,7 @@ function CabinRow({ cabin }) {
   return (
     <div className="grid grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center border-b-[1px] border-[#374151]">
       <img
-        className="border-r-[1px] border-[#374151] aspect-auto w-16 block object-cover object-center transform scale-150 translate-x-[-7px]"
+        className="border-r-[1px] border-[#374151] aspect-[3/2] w-16 block object-cover object-center transform scale-150 translate-x-[-7px]"
         src={image}
         alt="cabin image"
       />
