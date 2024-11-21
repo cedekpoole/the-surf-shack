@@ -22,7 +22,7 @@ function CabinTable() {
     >
       <div
         role="row"
-        className="bg-[#34434D] border-b-2 border-[#374151] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
+        className="bg-[#34434D] border-b-2 border-[#374151] grid grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
       >
         <div></div>
         <div>Cabin</div>

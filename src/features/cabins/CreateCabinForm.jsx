@@ -1,3 +1,4 @@
+import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
@@ -30,8 +31,13 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow>
-        <button type="reset">Cancel</button>
-        <button>Create Cabin</button>
+        <div></div>
+        <Button style="secondary" type="reset" className=" mr-4">
+          Cancel
+        </Button>
+        <Button type="submit" style="primary">
+          Create Cabin
+        </Button>
       </FormRow>
     </Form>
   );
