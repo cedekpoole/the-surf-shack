@@ -25,7 +25,7 @@ function CreateCabinForm() {
         <textarea id="description" />
       </FormRow>
 
-      <FormRow label="Image">
+      <FormRow label="Cabin Photo">
         <input id="image" type="file" accept="image/*" />
       </FormRow>
 

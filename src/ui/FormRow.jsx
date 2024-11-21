@@ -19,7 +19,7 @@ function FormRow({ label, error, children, orientation = "horizontal" }) {
       }`}
     >
       {label && (
-        <label htmlFor={children.props.id} className="font-md">
+        <label htmlFor={children.props.id} className="font-medium">
           {label}
         </label>
       )}
