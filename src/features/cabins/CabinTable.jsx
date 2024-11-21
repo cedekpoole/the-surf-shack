@@ -18,11 +18,11 @@ function CabinTable() {
   return (
     <div
       role="table"
-      className="border border-gray-200 rounded-md overflow-hidden"
+      className="border border-[#374151] border-b-0 rounded-md overflow-hidden shadow-md"
     >
       <div
         role="row"
-        className="bg-[#34434D] border-b-2 border-gray-200 grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
+        className="bg-[#34434D] border-b-2 border-[#374151] grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
       >
         <div></div>
         <div>Cabin</div>
