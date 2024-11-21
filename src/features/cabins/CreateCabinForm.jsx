@@ -32,7 +32,7 @@ function CreateCabinForm() {
 
       <FormRow>
         <div></div>
-        <Button style="secondary" type="reset" className=" mr-4">
+        <Button style="secondary" type="reset" className="mr-4">
           Cancel
         </Button>
         <Button type="submit" style="primary">

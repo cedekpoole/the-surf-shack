@@ -30,7 +30,7 @@ function Button({
     <button
       type={type}
       onClick={onClick}
-      className={styleClasses[style] + className}
+      className={`${styleClasses[style]} ${className}`}
     >
       {children}
     </button>
