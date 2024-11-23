@@ -20,8 +20,12 @@ CreateCabinForm.propTypes = {
 };
 
 function CreateCabinForm({ cabin }) {
-  const { id: editId, ...editCabin } = cabin;
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { id: editId, ...editCabin } = cabin || {};
+  const isEditSession = Boolean(editId);
+
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: isEditSession ? editCabin : {},
+  });
   const { errors } = formState;
   const queryClient = useQueryClient();
 
@@ -129,7 +133,7 @@ function CreateCabinForm({ cabin }) {
           type="file"
           disabled={isCreating}
           {...register("image", {
-            required: "Image is required",
+            required: isEditSession ? false : "Image is required",
           })}
         />
       </FormRow>
@@ -140,7 +144,7 @@ function CreateCabinForm({ cabin }) {
           Cancel
         </Button>
         <Button disabled={isCreating} type="submit" style="primary">
-          Create Cabin
+          {isEditSession ? "Update Cabin" : "Create Cabin"}
         </Button>
       </FormRow>
     </Form>
