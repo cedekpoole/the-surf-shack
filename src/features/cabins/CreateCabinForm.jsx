@@ -6,8 +6,21 @@ import Input from "../../ui/Input";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
+import PropTypes from "prop-types";
 
-function CreateCabinForm() {
+CreateCabinForm.propTypes = {
+  cabin: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+    maxCapacity: PropTypes.number,
+    name: PropTypes.string,
+    regularPrice: PropTypes.number,
+    discount: PropTypes.number,
+  }),
+};
+
+function CreateCabinForm({ cabin }) {
+  const { id: editId, ...editCabin } = cabin;
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
   const queryClient = useQueryClient();
