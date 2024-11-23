@@ -18,7 +18,7 @@ function Button({
   className = "",
 }) {
   const base =
-    "rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#374151] transition-all duration-300";
+    "rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#374151] transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50";
 
   const styleClasses = {
     primary:

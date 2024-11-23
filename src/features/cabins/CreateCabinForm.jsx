@@ -123,7 +123,7 @@ function CreateCabinForm() {
 
       <FormRow>
         <div></div>
-        <Button style="secondary" type="reset">
+        <Button disabled={isCreating} style="secondary" type="reset">
           Cancel
         </Button>
         <Button disabled={isCreating} type="submit" style="primary">
