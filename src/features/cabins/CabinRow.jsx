@@ -8,6 +8,7 @@ import { IoDuplicate } from "react-icons/io5";
 import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Table from "../../ui/Table";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
@@ -46,7 +47,7 @@ function CabinRow({ cabin }) {
   }
 
   return (
-    <div className="grid grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center border-b-[1px] border-[#374151]">
+    <Table.Row>
       <img
         className="border-r-[1px] border-[#374151] aspect-[3/2] w-16 block object-cover object-center transform scale-150 translate-x-[-7px]"
         src={image}
@@ -103,7 +104,7 @@ function CabinRow({ cabin }) {
           </Modal.Window>
         </Modal>
       </div>
-    </div>
+    </Table.Row>
   );
 }
 

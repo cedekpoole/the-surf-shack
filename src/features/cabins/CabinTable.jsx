@@ -1,4 +1,5 @@
 import Spinner from "../../ui/Spinner";
+import Table from "../../ui/Table";
 import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
 
@@ -9,25 +10,20 @@ function CabinTable() {
 
   if (loading) return <Spinner />;
   return (
-    <div
-      role="table"
-      className="border border-[#374151] border-b-0 rounded-md overflow-hidden shadow-md"
-    >
-      <div
-        role="row"
-        className="bg-[#34434D] border-b-2 border-[#374151] grid grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center font-semibold uppercase tracking-wide"
-      >
+    <Table>
+      <Table.Header>
         <div></div>
         <div>Cabin</div>
         <div>Capacity</div>
         <div>Price</div>
         <div>Discount</div>
         <div></div>
-      </div>
-      {cabins.map((cabin) => (
-        <CabinRow key={cabin.id} cabin={cabin} />
-      ))}
-    </div>
+      </Table.Header>
+      <Table.Body
+        data={cabins}
+        render={(cabin) => <CabinRow key={cabin.id} cabin={cabin} />}
+      />
+    </Table>
   );
 }
 
