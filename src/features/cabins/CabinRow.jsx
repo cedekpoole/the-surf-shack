@@ -7,6 +7,7 @@ import { useDeleteCabin } from "./useDeleteCabin";
 import { IoDuplicate } from "react-icons/io5";
 import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
@@ -80,15 +81,26 @@ function CabinRow({ cabin }) {
           <Modal.Window name="edit">
             <CreateCabinForm cabin={cabin} />
           </Modal.Window>
-          <button
-            disabled={isDeleting}
-            onClick={() => deleteCabin(cabinId)}
-            className="transition hover:scale-110"
-          >
-            <span className="text-accent-dark hover:text-accent-light text-lg">
-              <ImBin />
-            </span>
-          </button>
+
+          <Modal.Open opens="delete">
+            <button
+              disabled={isDeleting}
+              onClick={() => deleteCabin(cabinId)}
+              className="transition hover:scale-110"
+            >
+              <span className="text-accent-dark hover:text-accent-light text-lg">
+                <ImBin />
+              </span>
+            </button>
+          </Modal.Open>
+
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resource="cabin"
+              disabled={isDeleting}
+              onConfirm={() => deleteCabin(cabinId)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </div>

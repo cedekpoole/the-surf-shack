@@ -25,11 +25,10 @@ function Button({
       base +
       " bg-primary tracking-wide uppercase hover:bg-primary-light hover:font-medium hover:scale-105 text-[#F9FAFB]",
     secondary:
-      base +
-      "bg-[#374151] text-[#F9FAFB] hover:bg-[#34434D] border-[1px] border-[#374151]",
+      base + " text-[#F9FAFB] hover:bg-[#34434D] border-[1px] border-[#374151]",
     danger:
       base +
-      "bg-[#EF4444] text-[#F9FAFB] hover:bg-[#F87171] uppercase tracking-wide hover:font-medium hover:scale-105",
+      " bg-[#EF4444] text-[#F9FAFB] hover:bg-[#F87171] uppercase tracking-wide hover:font-medium hover:scale-105",
   };
   return (
     <button
