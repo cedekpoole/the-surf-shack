@@ -3,7 +3,15 @@ import { forwardRef } from "react";
 
 const Input = forwardRef(
   (
-    { type, id, defaultValue, disabled = false, element = "input", ...props },
+    {
+      type,
+      id,
+      defaultValue,
+      disabled = false,
+      element = "input",
+      onBlur,
+      ...props
+    },
     ref
   ) => {
     const fileInput = type === "file";
@@ -43,6 +51,7 @@ const Input = forwardRef(
         type={type}
         defaultValue={defaultValue}
         disabled={disabled}
+        onBlur={onBlur}
         {...props}
       />
     );
@@ -55,6 +64,7 @@ Input.propTypes = {
   defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["input", "textarea"]),
+  onBlur: PropTypes.func,
 };
 
 Input.displayName = "Input";
