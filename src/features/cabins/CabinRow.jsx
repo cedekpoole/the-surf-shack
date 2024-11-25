@@ -53,7 +53,11 @@ function CabinRow({ cabin }) {
         <div className="font-semibold text-lg tracking-wide">{name}</div>
         <div>Fits up to {maxCapacity} guests</div>
         <div>{formatCurrency(regularPrice)}</div>
-        <div>{formatCurrency(discount)}</div>
+        {discount ? (
+          <div>{formatCurrency(discount)}</div>
+        ) : (
+          <span className="ml-2">&mdash;</span>
+        )}
         <div className="flex justify-between">
           <button
             disabled={isDeleting}
