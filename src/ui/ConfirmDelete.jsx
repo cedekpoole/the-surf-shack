@@ -5,10 +5,10 @@ ConfirmDelete.propTypes = {
   resource: PropTypes.string.isRequired,
   onConfirm: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  closeModal: PropTypes.func.isRequired,
+  onCloseModal: PropTypes.func,
 };
 
-function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
+function ConfirmDelete({ resource, onConfirm, disabled, onCloseModal }) {
   function handleConfirmClick() {
     onConfirm();
   }
@@ -22,7 +22,7 @@ function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
       </p>
 
       <div className="flex justify-end gap-4">
-        <Button style="secondary" onClick={closeModal}>
+        <Button style="secondary" onClick={onCloseModal}>
           Cancel
         </Button>
         <Button style="danger" onClick={handleConfirmClick} disabled={disabled}>
