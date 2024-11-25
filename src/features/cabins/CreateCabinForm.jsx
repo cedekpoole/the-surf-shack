@@ -16,15 +16,16 @@ CreateCabinForm.propTypes = {
     regularPrice: PropTypes.number,
     discount: PropTypes.number,
   }),
+  onCloseModal: PropTypes.func,
 };
 
-function CreateCabinForm({ cabin }) {
+function CreateCabinForm({ cabin = {}, onCloseModal }) {
   const { createCabin, isCreating } = useCreateCabin();
   const { editCabin, isEditing } = useEditCabin();
 
   const isWorking = isCreating || isEditing;
 
-  const { id: editId, ...editedCabin } = cabin || {};
+  const { id: editId, ...editedCabin } = cabin;
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -40,9 +41,23 @@ function CreateCabinForm({ cabin }) {
     if (isEditSession)
       editCabin(
         { cabin: { ...data, image }, id: editId },
-        { onSuccess: () => reset() }
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        }
       );
-    else createCabin({ ...data, image }, { onSuccess: () => reset() });
+    else
+      createCabin(
+        { ...data, image },
+        {
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
+        }
+      );
   }
 
   function onError(errors) {
@@ -138,7 +153,12 @@ function CreateCabinForm({ cabin }) {
 
       <FormRow>
         <div></div>
-        <Button disabled={isWorking} style="secondary" type="reset">
+        <Button
+          onClick={() => onCloseModal?.()}
+          disabled={isWorking}
+          style="secondary"
+          type="reset"
+        >
           Cancel
         </Button>
         <Button disabled={isWorking} type="submit" style="primary">
