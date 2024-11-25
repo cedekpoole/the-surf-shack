@@ -5,15 +5,12 @@ Table.propTypes = {
   children: PropTypes.node,
   gridCols: PropTypes.string,
 };
-
 Header.propTypes = {
   children: PropTypes.node,
 };
-
 Row.propTypes = {
   children: PropTypes.node,
 };
-
 Body.propTypes = {
   data: PropTypes.array,
   render: PropTypes.func,
