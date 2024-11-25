@@ -10,7 +10,7 @@ export async function getCabins() {
   return data;
 }
 
-export async function createCabin(cabin) {
+export async function createEditCabin(cabin) {
   const imageName = `${Math.random()}.jpg-${cabin.image.name}`.replaceAll(
     "/",
     ""
@@ -24,7 +24,8 @@ export async function createCabin(cabin) {
   const { data, error } = await supabase
     .from("cabins")
     .insert([{ ...cabin, image: imagePath }])
-    .select();
+    .select()
+    .single();
 
   if (error) {
     console.error(error);

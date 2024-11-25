@@ -4,7 +4,7 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCabin } from "../../services/apiCabins";
+import { createEditCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
 import PropTypes from "prop-types";
 
@@ -30,7 +30,7 @@ function CreateCabinForm({ cabin }) {
   const queryClient = useQueryClient();
 
   const { mutate, isPending: isCreating } = useMutation({
-    mutationFn: (cabin) => createCabin(cabin),
+    mutationFn: (cabin) => createEditCabin(cabin),
     onSuccess: () => {
       toast.success("Cabin successfully created!");
       queryClient.invalidateQueries({
