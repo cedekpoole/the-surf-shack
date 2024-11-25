@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import { formatCurrency } from "../../utils/helpers";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
 import { ImBin } from "react-icons/im";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
+import { useDeleteCabin } from "./useDeleteCabin";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
@@ -21,6 +19,7 @@ CabinRow.propTypes = {
 
 function CabinRow({ cabin }) {
   const [showForm, setShowForm] = useState(false);
+  const { isDeleting, deleteCabin } = useDeleteCabin();
   const {
     id: cabinId,
     image,
@@ -30,18 +29,6 @@ function CabinRow({ cabin }) {
     discount,
   } = cabin;
 
-  const queryClient = useQueryClient();
-
-  const { isPending: isDeleting, mutate } = useMutation({
-    mutationFn: (id) => deleteCabin(id),
-    onSuccess: () => {
-      toast.success("Cabin deleted");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
-    },
-    onError: (err) => toast.error(err.message),
-  });
   return (
     <>
       <div className="grid grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr] px-4 py-3 items-center border-b-[1px] border-[#374151]">
@@ -70,7 +57,7 @@ function CabinRow({ cabin }) {
           </button>
           <button
             disabled={isDeleting}
-            onClick={() => mutate(cabinId)}
+            onClick={() => deleteCabin(cabinId)}
             className="transition hover:scale-110"
           >
             <span className="text-accent-dark hover:text-accent-light text-lg">
