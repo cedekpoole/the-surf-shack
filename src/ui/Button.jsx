@@ -27,6 +27,9 @@ function Button({
     secondary:
       base +
       "bg-[#374151] text-[#F9FAFB] hover:bg-[#34434D] border-[1px] border-[#374151]",
+    danger:
+      base +
+      "bg-[#EF4444] text-[#F9FAFB] hover:bg-[#F87171] uppercase tracking-wide hover:font-medium hover:scale-105",
   };
   return (
     <button
