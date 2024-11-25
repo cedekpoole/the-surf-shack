@@ -5,6 +5,8 @@ import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import { useDeleteCabin } from "./useDeleteCabin";
+import { IoDuplicate } from "react-icons/io5";
+import { useCreateCabin } from "./useCreateCabin";
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
@@ -14,12 +16,14 @@ CabinRow.propTypes = {
     name: PropTypes.string,
     regularPrice: PropTypes.number,
     discount: PropTypes.number,
+    description: PropTypes.string,
   }),
 };
 
 function CabinRow({ cabin }) {
   const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteCabin } = useDeleteCabin();
+  const { isCreating, createCabin } = useCreateCabin();
   const {
     id: cabinId,
     image,
@@ -27,7 +31,19 @@ function CabinRow({ cabin }) {
     name,
     regularPrice,
     discount,
+    description,
   } = cabin;
+
+  function handleDuplicate() {
+    createCabin({
+      name: `${name}*`,
+      maxCapacity,
+      regularPrice,
+      discount,
+      image,
+      description,
+    });
+  }
 
   return (
     <>
@@ -46,6 +62,15 @@ function CabinRow({ cabin }) {
           <span className="ml-2">&mdash;</span>
         )}
         <div className="flex justify-between">
+          <button
+            disabled={isCreating}
+            onClick={handleDuplicate}
+            className="transition hover:scale-110"
+          >
+            <span className="text-accent-dark hover:text-accent-light text-lg">
+              <IoDuplicate />
+            </span>
+          </button>
           <button
             disabled={isDeleting}
             onClick={() => setShowForm(!showForm)}
