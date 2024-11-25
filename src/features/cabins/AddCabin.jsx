@@ -1,15 +1,23 @@
 import { useState } from "react";
 import Button from "../../ui/Button";
 import CreateCabinForm from "./CreateCabinForm";
+import Modal from "../../ui/Modal";
 
 function AddCabin() {
-  const [showForm, setShowForm] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   return (
     <>
       <div className="flex justify-end">
-        <Button onClick={() => setShowForm(!showForm)}> + Add new cabin</Button>
+        <Button onClick={() => setIsOpenModal((show) => !show)}>
+          {" "}
+          + Add new cabin
+        </Button>
       </div>
-      {showForm && <CreateCabinForm />};
+      {isOpenModal && (
+        <Modal onClose={() => setIsOpenModal(false)}>
+          <CreateCabinForm />
+        </Modal>
+      )}
     </>
   );
 }
