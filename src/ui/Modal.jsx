@@ -1,5 +1,12 @@
 import PropTypes from "prop-types";
-import { cloneElement, createContext, useContext, useState } from "react";
+import {
+  cloneElement,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 
@@ -41,11 +48,27 @@ function Open({ children, opens: opensWindowName }) {
 
 function Window({ children, name }) {
   const { openName, close } = useContext(modalContext);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) {
+        close();
+      }
+    }
+    document.addEventListener("click", handleClick, true);
+
+    return () => document.removeEventListener("click", handleClick, true);
+  }, [close]);
+
   if (name !== openName) return null;
 
   return createPortal(
     <div className="fixed top-0 left-0 w-full h-screen bg-primary-dark/30 backdrop-blur-sm z-[1000] transition-all duration-500">
-      <div className="fixed top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] bg-[#1E272D] rounded-lg shadow-lg py-10 px-12">
+      <div
+        ref={ref}
+        className="fixed top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] bg-[#1E272D] rounded-lg shadow-lg py-10 px-12"
+      >
         <button
           onClick={close}
           className="bg-none border-none p-[0.4rem] rounded-lg translate-x-[0.8rem] transition-all duration-200 absolute top-3 right-6 hover:bg-gray-100"
