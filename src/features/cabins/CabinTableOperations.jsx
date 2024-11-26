@@ -1,5 +1,7 @@
+import TableOperations from "../../ui/TableOperations";
+
 function CabinTableOperations() {
-  return <div>Hello</div>;
+  return <TableOperations></TableOperations>;
 }
 
 export default CabinTableOperations;
