@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 Menus.propTypes = {
   children: PropTypes.node,
@@ -19,6 +20,8 @@ List.propTypes = {
 };
 Button.propTypes = {
   children: PropTypes.node,
+  icon: PropTypes.node,
+  onClick: PropTypes.func,
 };
 
 const MenusContext = createContext();
@@ -55,7 +58,7 @@ function Toggle({ id }) {
   return (
     <button
       onClick={handleClick}
-      className="p-2 rounded-sm transform translate-x-3 transition-all duration-200 hover:bg-accent-dark hover:text-[#1E272D]"
+      className="p-2 rounded-sm transform translate-x-24 transition-all duration-200 hover:bg-accent-dark hover:text-[#1E272D]"
     >
       <HiEllipsisVertical />
     </button>
@@ -63,13 +66,16 @@ function Toggle({ id }) {
 }
 
 function List({ id, children }) {
-  const { openId, position } = useContext(MenusContext);
+  const { openId, position, close } = useContext(MenusContext);
+
+  const ref = useOutsideClick(close, true);
 
   if (openId !== id) return null;
 
   return createPortal(
     <ul
-      className={`fixed bg-[#1E272D] rounded-sm shadow-md`}
+      ref={ref}
+      className={`fixed bg-[#34434D] rounded-sm shadow-md`}
       style={{ top: position?.y || 0, right: position?.x || 0 }}
     >
       {children}
@@ -78,10 +84,19 @@ function List({ id, children }) {
   );
 }
 
-function Button({ children }) {
+function Button({ children, icon, onClick }) {
+  const { close } = useContext(MenusContext);
+  function handleClick() {
+    onClick?.();
+    close();
+  }
   return (
     <li>
-      <button className="w-full py-2 px-4 text-left hover:bg-primary-light">
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-5 w-full py-2 px-4 text-left hover:bg-primary-light"
+      >
+        <span>{icon}</span>
         {children}
       </button>
     </li>

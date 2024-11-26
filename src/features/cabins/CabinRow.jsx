@@ -63,55 +63,38 @@ function CabinRow({ cabin }) {
         <span className="ml-2">&mdash;</span>
       )}
       <div className="flex justify-between">
-        <button
-          disabled={isCreating}
-          onClick={handleDuplicate}
-          className="transition hover:scale-110"
-        >
-          <span className="text-accent-dark hover:text-accent-light text-lg">
-            <IoDuplicate />
-          </span>
-        </button>
         <Modal>
-          <Modal.Open opens="edit">
-            <button className="transition hover:scale-110">
-              <span className="text-accent-dark hover:text-accent-light text-lg">
-                <FaEdit />
-              </span>
-            </button>
-          </Modal.Open>
-          <Modal.Window name="edit">
-            <CreateCabinForm cabin={cabin} />
-          </Modal.Window>
+          <Menus.Menu>
+            <Menus.Toggle id={cabinId} />
+            <Menus.List id={cabinId}>
+              <Menus.Button icon={<IoDuplicate />} onClick={handleDuplicate}>
+                Duplicate
+              </Menus.Button>
+              <Modal.Open opens="edit">
+                <Menus.Button icon={<FaEdit />}>Edit</Menus.Button>
+              </Modal.Open>
+              <Modal.Open opens="delete">
+                <Menus.Button
+                  icon={<ImBin />}
+                  onClick={() => deleteCabin(cabinId)}
+                >
+                  Delete
+                </Menus.Button>
+              </Modal.Open>
+            </Menus.List>
+            <Modal.Window name="edit">
+              <CreateCabinForm cabin={cabin} />
+            </Modal.Window>
 
-          <Modal.Open opens="delete">
-            <button
-              disabled={isDeleting}
-              onClick={() => deleteCabin(cabinId)}
-              className="transition hover:scale-110"
-            >
-              <span className="text-accent-dark hover:text-accent-light text-lg">
-                <ImBin />
-              </span>
-            </button>
-          </Modal.Open>
-
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resource="cabin"
-              disabled={isDeleting}
-              onConfirm={() => deleteCabin(cabinId)}
-            />
-          </Modal.Window>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resource="cabin"
+                disabled={isDeleting}
+                onConfirm={() => deleteCabin(cabinId)}
+              />
+            </Modal.Window>
+          </Menus.Menu>
         </Modal>
-        <Menus.Menu>
-          <Menus.Toggle id={cabinId} />
-          <Menus.List id={cabinId}>
-            <Menus.Button>Duplicate</Menus.Button>
-            <Menus.Button>Edit</Menus.Button>
-            <Menus.Button>Delete</Menus.Button>
-          </Menus.List>
-        </Menus.Menu>
       </div>
     </Table.Row>
   );
