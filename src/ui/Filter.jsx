@@ -1,21 +1,26 @@
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Filter() {
+Filter.propTypes = {
+  filterField: PropTypes.string,
+  options: PropTypes.array,
+};
+
+function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeFilter, setActiveFilter] = useState("All");
+  const filters = options;
 
-  const filters = ["All", "No discount", "With discount"];
+  const activeFilter =
+    options.find(
+      (filter) =>
+        searchParams.get(filterField) ===
+        filter.toLowerCase().replace(/\s+/g, "-") // Match URL format
+    ) || options[0];
 
   function handleClick(value) {
-    setActiveFilter(value);
+    const urlValue = value.toLowerCase().replace(/\s+/g, "-");
 
-    const urlValue =
-      value === "All"
-        ? value.toLowerCase()
-        : value.toLowerCase().replace(" ", "-");
-
-    searchParams.set("discount", urlValue);
+    searchParams.set(filterField, urlValue);
     setSearchParams(searchParams);
   }
   return (
