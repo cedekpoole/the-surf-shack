@@ -3,28 +3,9 @@ import Table from "../../ui/Table";
 import { useBookings } from "./useBookings";
 import Spinner from "../../ui/Spinner";
 import BookingRow from "./BookingRow";
-import { useSearchParams } from "react-router-dom";
 
 function BookingsTable() {
   const { bookings, loading } = useBookings();
-  const [searchParams] = useSearchParams();
-
-  const filterValue = searchParams.get("status") || "all";
-
-  let filteredBookings;
-  if (filterValue === "all") filteredBookings = bookings;
-  if (filterValue === "unconfirmed")
-    filteredBookings = bookings.filter(
-      (booking) => booking.status === "unconfirmed"
-    );
-  if (filterValue === "checked-out")
-    filteredBookings = bookings.filter(
-      (booking) => booking.status === "checked-out"
-    );
-  if (filterValue === "checked-in")
-    filteredBookings = bookings.filter(
-      (booking) => booking.status === "checked-in"
-    );
 
   if (loading) return <Spinner />;
   return (
@@ -39,7 +20,7 @@ function BookingsTable() {
           <div></div>
         </Table.Header>
         <Table.Body
-          data={filteredBookings}
+          data={bookings}
           render={(booking) => (
             <BookingRow key={booking.id} booking={booking} />
           )}
