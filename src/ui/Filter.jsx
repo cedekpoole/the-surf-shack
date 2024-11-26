@@ -24,12 +24,12 @@ function Filter({ filterField, options }) {
     setSearchParams(searchParams);
   }
   return (
-    <div className="border border-[#374151] shadow-sm rounded-sm p-2 flex gap-2">
+    <div className="bg-[#34434D] border border-[#374151] shadow-sm rounded-md p-1 flex gap-1.5">
       {filters.map((filter) => (
         <button
           key={filter}
           onClick={() => handleClick(filter)}
-          className={`text-lg font-medium transition-all py-[0.44rem] px-[0.8rem] duration-300 rounded-sm 
+          className={`text-md font-medium transition-all py-[0.44rem] px-[0.8rem] duration-300 rounded-md 
             hover:bg-primary hover:text-white ${
               activeFilter === filter ? "bg-primary " : ""
             }`}
