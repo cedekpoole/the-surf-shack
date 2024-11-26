@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 PageHeader.propTypes = {
   children: PropTypes.node,
   header: PropTypes.string,
-  filter: PropTypes.bool,
+  operation: PropTypes.node,
 };
 
-function PageHeader({ children, header, filter = true }) {
+function PageHeader({ children, header, operation }) {
+  const allowTableOperations = Boolean(operation);
+
   return (
     <div className="p-4 flex flex-col gap-4">
-      <div className="flex justify-between mb-8">
+      <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-semibold tracking-wide">{header}</h1>
-        {filter ? <button>Filter / Sort</button> : <div></div>}
+        {allowTableOperations ? operation : <div></div>}
       </div>
       {children}
     </div>
