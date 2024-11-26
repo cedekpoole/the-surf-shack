@@ -55,7 +55,7 @@ function Toggle({ id }) {
   return (
     <button
       onClick={handleClick}
-      className="p-2 rounded-sm transform translate-x-3 transition-all duration-200 hover:bg-gray-100"
+      className="p-2 rounded-sm transform translate-x-3 transition-all duration-200 hover:bg-accent-dark hover:text-[#1E272D]"
     >
       <HiEllipsisVertical />
     </button>
