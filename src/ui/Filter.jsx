@@ -30,9 +30,10 @@ function Filter({ filterField, options }) {
           key={filter}
           onClick={() => handleClick(filter)}
           className={`text-md font-medium transition-all py-[0.44rem] px-[0.8rem] duration-300 rounded-md 
-            hover:bg-primary hover:text-white ${
+            hover:bg-primary hover:text-white disabled:cursor-not-allowed ${
               activeFilter === filter ? "bg-primary " : ""
             }`}
+          disabled={activeFilter === filter}
         >
           {filter}
         </button>
