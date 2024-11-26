@@ -50,7 +50,7 @@ function CabinRow({ cabin }) {
   return (
     <Table.Row>
       <img
-        className="aspect-[3/2] rounded-r-sm w-[4.1rem] block object-cover object-center transform scale-150 translate-x-[-7px]"
+        className="aspect-[3/2] rounded-sm w-[4.1rem] block object-cover object-center transform scale-150 translate-x-[-1px]"
         src={image}
         alt="cabin image"
       />
