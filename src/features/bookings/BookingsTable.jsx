@@ -2,6 +2,7 @@ import Menus from "../../ui/Menus";
 import Table from "../../ui/Table";
 import { useBookings } from "./useBookings";
 import Spinner from "../../ui/Spinner";
+import BookingRow from "./BookingRow";
 
 function BookingsTable() {
   const { bookings, loading } = useBookings();
@@ -18,7 +19,12 @@ function BookingsTable() {
           <div>Amount</div>
           <div></div>
         </Table.Header>
-        {/* <Table.Body data={bookings} render={(booking) => <div></div>} /> */}
+        <Table.Body
+          data={bookings}
+          render={(booking) => (
+            <BookingRow key={booking.id} booking={booking} />
+          )}
+        />
       </Table>
     </Menus>
   );
