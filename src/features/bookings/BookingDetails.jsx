@@ -4,10 +4,12 @@ import Tag from "../../ui/Tag";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import BookingDataBox from "./BookingDataBox";
+import { useNavigate } from "react-router-dom";
 
 function BookingDetails() {
   const { booking, loading } = useBooking();
   const moveBack = useMoveBack();
+  const navigate = useNavigate();
 
   if (loading) return <Spinner />;
 
@@ -26,13 +28,31 @@ function BookingDetails() {
           <h1 className="text-3xl font-semibold tracking-wide">
             Booking #{bookingId}
           </h1>
-          <Tag type={statusToTagName[status]}>Unconfirmed</Tag>
+          <Tag type={statusToTagName[status]}>{status}</Tag>
         </div>
         <Button onClick={moveBack} style="secondary">
           &larr; Go Back
         </Button>
       </div>
       <BookingDataBox booking={booking} />
+      <div className="flex gap-5 justify-end">
+        {status === "unconfirmed" && (
+          <Button
+            style="secondary"
+            onClick={() => navigate(`/checkin/${bookingId}`)}
+          >
+            Check in
+          </Button>
+        )}
+        {status === "checked-in" && (
+          <Button
+            style="secondary"
+            onClick={() => navigate(`/checkin/${bookingId}`)}
+          >
+            Check out
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
