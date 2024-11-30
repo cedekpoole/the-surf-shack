@@ -69,7 +69,7 @@ function Row({ children }) {
 
 function Footer({ children }) {
   return (
-    <footer className="bg-[#34434D] p-3 flex justify-center border-t-2 border-[#374151] rounded-b-md overflow-hidden shadow-md">
+    <footer className="bg-[#34434D] p-2 flex justify-center border-t-2 border-[#374151] rounded-b-md overflow-hidden shadow-md">
       {children}
     </footer>
   );

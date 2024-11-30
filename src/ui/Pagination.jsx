@@ -31,7 +31,7 @@ function Pagination({ count }) {
   if (count <= PAGE_SIZE) return null;
   return (
     <div className="w-full flex items-center justify-between">
-      <p className="text-md mr-5">
+      <p className="text-md ml-5">
         Showing{" "}
         <span className="font-semibold">
           {(currentPage - 1) * PAGE_SIZE + 1}
