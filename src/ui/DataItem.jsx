@@ -6,12 +6,12 @@ DataItem.propTypes = {
   icon: PropTypes.node,
 };
 
-function DataItem(icon, label, children) {
+function DataItem({ icon, label, children }) {
   return (
     <div className="flex items-center gap-6 py-3">
-      <span className="flex items-center gap-3 font-medium text-lg">
+      <span className="flex items-center gap-2.5 font-medium text-2xl">
         {icon}
-        <span>{label}</span>
+        <span className="text-lg">{label}</span>
       </span>
       {children}
     </div>

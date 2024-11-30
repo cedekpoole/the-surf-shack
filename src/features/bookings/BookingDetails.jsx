@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 import Tag from "../../ui/Tag";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
+import BookingDataBox from "./BookingDataBox";
 
 function BookingDetails() {
   const { booking, loading } = useBooking();
@@ -31,6 +32,7 @@ function BookingDetails() {
           &larr; Go Back
         </Button>
       </div>
+      <BookingDataBox booking={booking} />
     </div>
   );
 }
