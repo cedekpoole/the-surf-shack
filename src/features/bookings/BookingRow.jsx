@@ -6,6 +6,7 @@ import { formatCurrency } from "../../utils/helpers";
 import Tag from "../../ui/Tag";
 import Menus from "../../ui/Menus";
 import { HiEye } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 
 BookingRow.propTypes = {
   booking: PropTypes.shape({
@@ -40,6 +41,8 @@ function BookingRow({
     cabins: { name: cabinName },
   },
 }) {
+  const navigate = useNavigate();
+
   const statusToTagName = {
     unconfirmed: "bg-blue-200 text-blue-700",
     "checked-in": "bg-green-200 text-green-700",
@@ -69,7 +72,12 @@ function BookingRow({
       <Menus.Menu>
         <Menus.Toggle id={bookingId} />
         <Menus.List id={bookingId}>
-          <Menus.Button icon={<HiEye />}>See Details</Menus.Button>
+          <Menus.Button
+            icon={<HiEye />}
+            onClick={() => navigate(`/bookings/${bookingId}`)}
+          >
+            See Details
+          </Menus.Button>
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
