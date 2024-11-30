@@ -54,13 +54,13 @@ function BookingDataBox({ booking }) {
   } = booking;
 
   return (
-    <section className="p-8 rounded-lg overflow-hidden">
-      <header className="bg-primary-dark p-6 rounded-md text-lg font-medium flex items-center justify-between">
+    <section className="rounded-lg overflow-hidden shadow-md border border-[#374151]">
+      <header className="bg-primary-dark p-6 rounded-t-md text-lg font-medium flex items-center justify-between">
         <div className="flex items-center gap-4 font-semibold text-lg">
           <HiOutlineHomeModern className="text-3xl" />
           <p>
             {numNights} nights in Cabin{" "}
-            <span className="font-display text-xl ml-1">{cabinName}</span>
+            <span className="font-display text-xl">{cabinName}</span>
           </p>
         </div>
         <p>
