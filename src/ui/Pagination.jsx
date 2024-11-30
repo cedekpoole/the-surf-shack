@@ -2,18 +2,18 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import Button from "./Button";
 import PropTypes from "prop-types";
 import { useSearchParams } from "react-router-dom";
+import { PAGE_SIZE } from "../utils/constants";
 
 Pagination.propTypes = {
   count: PropTypes.number,
 };
-
-const PAGE_SIZE = 10;
 
 function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
+
   const pageCount = Math.ceil(count / PAGE_SIZE);
 
   function nextPage() {
