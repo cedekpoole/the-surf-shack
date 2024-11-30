@@ -15,6 +15,9 @@ Body.propTypes = {
   data: PropTypes.array,
   render: PropTypes.func,
 };
+Footer.propTypes = {
+  children: PropTypes.node,
+};
 
 const TableContext = createContext();
 
@@ -63,8 +66,17 @@ function Row({ children }) {
     </div>
   );
 }
+
+function Footer({ children }) {
+  return (
+    <footer className="bg-[#34434D] p-5 flex justify-center border-t-2 border-[#374151] rounded-b-md overflow-hidden shadow-md">
+      {children}
+    </footer>
+  );
+}
 Table.Header = Header;
 Table.Row = Row;
 Table.Body = Body;
+Table.Footer = Footer;
 
 export default Table;
