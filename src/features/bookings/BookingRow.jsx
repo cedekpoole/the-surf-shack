@@ -4,6 +4,8 @@ import { format, isToday } from "date-fns";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import { formatCurrency } from "../../utils/helpers";
 import Tag from "../../ui/Tag";
+import Menus from "../../ui/Menus";
+import { HiEye } from "react-icons/hi2";
 
 BookingRow.propTypes = {
   booking: PropTypes.shape({
@@ -64,6 +66,12 @@ function BookingRow({
       </div>
       <Tag type={statusToTagName[status]}>{status}</Tag>
       <div className="font-medium">{formatCurrency(totalPrice)}</div>
+      <Menus.Menu>
+        <Menus.Toggle id={bookingId} />
+        <Menus.List id={bookingId}>
+          <Menus.Button icon={<HiEye />}>See Details</Menus.Button>
+        </Menus.List>
+      </Menus.Menu>
     </Table.Row>
   );
 }

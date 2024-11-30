@@ -23,7 +23,7 @@ const TableContext = createContext();
 
 function Table({
   children,
-  gridCols = "grid-cols-[0.8fr_1.8fr_2.2fr_1fr_1fr_1fr]",
+  gridCols = "grid-cols-[0.6fr_1.1fr_1.8fr_1fr_1fr_0.2fr]",
 }) {
   return (
     <TableContext.Provider value={{ gridCols }}>
