@@ -9,6 +9,7 @@ Filter.propTypes = {
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const filters = options;
+  const page = searchParams.get("page");
 
   const activeFilter =
     options.find(
@@ -21,6 +22,7 @@ function Filter({ filterField, options }) {
     const urlValue = value.toLowerCase().replace(/\s+/g, "-");
 
     searchParams.set(filterField, urlValue);
+    if (page) searchParams.delete("page");
     setSearchParams(searchParams);
   }
   return (
