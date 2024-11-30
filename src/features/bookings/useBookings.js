@@ -17,12 +17,12 @@ export function useBookings() {
 
   const {
     isPending: loading,
-    data: bookings,
+    data: { bookings, count } = {},
     error,
   } = useQuery({
     queryKey: ["bookings", filter, sortBy],
     queryFn: () => getBookings({ filter, sortBy }),
   });
 
-  return { loading, bookings, error };
+  return { loading, bookings, error, count };
 }
