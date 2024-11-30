@@ -18,17 +18,17 @@ function Button({
   className = "",
 }) {
   const base =
-    "rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#374151] transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50";
+    "flex items-center justify-center rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#374151] transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50";
 
   const styleClasses = {
     primary:
       base +
       " bg-primary tracking-wide uppercase hover:bg-primary-light hover:font-medium hover:scale-105 text-[#F9FAFB]",
-    secondary:
-      base + " text-[#F9FAFB] hover:bg-[#34434D] border-[1px] border-[#374151]",
+    secondary: base + " hover:bg-[#34434D] border-[1px] border-[#374151]",
+    secondaryAlternative: base + " hover:bg-[#1E272D] shadow-none",
     danger:
       base +
-      " bg-[#EF4444] text-[#F9FAFB] hover:bg-[#F87171] uppercase tracking-wide hover:font-medium hover:scale-105",
+      " bg-[#EF4444] hover:bg-[#F87171] uppercase tracking-wide hover:font-medium hover:scale-105",
   };
   return (
     <button
