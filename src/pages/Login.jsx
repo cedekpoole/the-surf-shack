@@ -10,7 +10,7 @@ function Login() {
       <div className="absolute bg-white rounded-full w-1.5 h-1.5 opacity-60 animate-bubble left-64 bottom-14"></div>
 
       {/* Main Section */}
-      <main className="relative z-[2] flex flex-col gap-8 items-center justify-center min-h-screen">
+      <main className="relative z-[2] flex flex-col gap-6 items-center justify-center min-h-screen">
         <Logo type="large" />
         <h1 className="text-2xl font-semibold tracking-wide ">
           Log into your account
