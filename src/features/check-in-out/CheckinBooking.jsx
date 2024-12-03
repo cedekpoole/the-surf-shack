@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import Button from "../../ui/Button";
 import BookingDataBox from "../bookings/BookingDataBox";
@@ -9,6 +10,9 @@ import Checkbox from "../../ui/Checkbox";
 function CheckinBooking() {
   const [confirmPayment, setConfirmPayment] = useState(false);
   const { booking, loading } = useBooking();
+
+  useEffect(() => setConfirmPayment(booking?.isPaid), [booking]);
+
   const moveBack = useMoveBack();
 
   if (loading) return <Spinner />;
@@ -33,8 +37,13 @@ function CheckinBooking() {
         </Button>
       </div>
       <BookingDataBox booking={booking} />
-      <div className="px-10 py-10 shadow-md border border-[#374151] rounded-lg">
-        <Checkbox>
+      <div className="px-10 py-8 shadow-md border border-[#374151] rounded-lg">
+        <Checkbox
+          checked={confirmPayment}
+          onChange={() => setConfirmPayment((confirm) => !confirm)}
+          id="confirm-payment"
+          disabled={confirmPayment}
+        >
           I confirm that {guests.fullName} has paid the total amount
         </Checkbox>
       </div>

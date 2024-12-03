@@ -17,11 +17,13 @@ function Checkbox({ checked, onChange, disabled = false, id, children }) {
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        className={`h-6 w-6 outline-offset-2 transform origin-center disabled:cursor-not-allowed accent-secondary-light`}
+        className={`h-6 w-6 outline-offset-2 transform origin-center disabled:cursor-not-allowed accent-accent-light cursor-pointer`}
       />
       <label
         htmlFor={!disabled ? id : ""}
-        className="flex flex-1 items-center gap-2 cursor-pointer"
+        className={`flex flex-1 items-center gap-2 cursor-pointer ${
+          disabled && "cursor-not-allowed"
+        }`}
       >
         {children}
       </label>
