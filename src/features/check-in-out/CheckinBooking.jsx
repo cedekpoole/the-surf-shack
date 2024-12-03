@@ -3,8 +3,11 @@ import Button from "../../ui/Button";
 import BookingDataBox from "../bookings/BookingDataBox";
 import { useBooking } from "../bookings/useBooking";
 import Spinner from "../../ui/Spinner";
+import { useState } from "react";
+import Checkbox from "../../ui/Checkbox";
 
 function CheckinBooking() {
+  const [confirmPayment, setConfirmPayment] = useState(false);
   const { booking, loading } = useBooking();
   const moveBack = useMoveBack();
 
@@ -30,6 +33,11 @@ function CheckinBooking() {
         </Button>
       </div>
       <BookingDataBox booking={booking} />
+      <div className="px-10 py-10 shadow-md border border-[#374151] rounded-lg">
+        <Checkbox>
+          I confirm that {guests.fullName} has paid the total amount
+        </Checkbox>
+      </div>
       <div className="flex gap-5 justify-end">
         <Button onClick={() => {}}>Check in booking #{bookingId}</Button>
         <Button style="secondary" onClick={moveBack}>
