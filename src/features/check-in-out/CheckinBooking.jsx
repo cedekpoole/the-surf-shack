@@ -48,7 +48,9 @@ function CheckinBooking() {
         </Checkbox>
       </div>
       <div className="flex gap-5 justify-end">
-        <Button onClick={() => {}}>Check in booking #{bookingId}</Button>
+        <Button onClick={() => {}} disabled={!confirmPayment}>
+          Check in booking #{bookingId}
+        </Button>
         <Button style="secondary" onClick={moveBack}>
           Back
         </Button>
