@@ -9,7 +9,6 @@ import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
 import { useCheckin } from "./useCheckin";
 import { useSettings } from "../settings/useSettings";
-import { useCheckout } from "./useCheckout";
 
 function CheckinBooking() {
   const [confirmPayment, setConfirmPayment] = useState(false);
