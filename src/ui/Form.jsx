@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 Form.propTypes = {
   children: PropTypes.node,
   onSubmit: PropTypes.func,
+  type: PropTypes.string,
 };
 
-function Form({ children, onSubmit }) {
+function Form({ children, onSubmit, type }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="text-md w-[60rem] border-[1px] border-[#374151] shadow-md px-3 rounded-md"
+      type={type}
+      className={`text-md border-[1px] border-[#374151] shadow-md px-3 rounded-md ${
+        type === "modal" ? "w-[60rem]" : "w-[40rem]"
+      }`}
     >
       {children}
     </form>
