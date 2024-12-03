@@ -5,11 +5,13 @@ import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import BookingDataBox from "./BookingDataBox";
 import { useNavigate } from "react-router-dom";
+import { useCheckout } from "../check-in-out/useCheckout";
 
 function BookingDetails() {
   const { booking, loading } = useBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
 
   if (loading) return <Spinner />;
 
@@ -36,6 +38,9 @@ function BookingDetails() {
       </div>
       <BookingDataBox booking={booking} />
       <div className="flex gap-5 justify-end">
+        <Button onClick={moveBack} style="secondary">
+          Back
+        </Button>
         {status === "unconfirmed" && (
           <Button
             style="secondary"
@@ -45,10 +50,7 @@ function BookingDetails() {
           </Button>
         )}
         {status === "checked-in" && (
-          <Button
-            style="secondary"
-            onClick={() => navigate(`/checkin/${bookingId}`)}
-          >
+          <Button onClick={() => checkout(bookingId)} disabled={isCheckingOut}>
             Check out
           </Button>
         )}
