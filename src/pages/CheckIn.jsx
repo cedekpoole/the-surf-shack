@@ -1,9 +1,7 @@
+import CheckinBooking from "../features/check-in-out/CheckinBooking";
+
 function CheckIn() {
-    return (
-        <div>
-            Check In
-        </div>
-    )
+  return <CheckinBooking />;
 }
 
-export default CheckIn
+export default CheckIn;
