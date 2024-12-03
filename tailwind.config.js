@@ -24,6 +24,24 @@ export default {
           dark: "#F5F22C",
         },
       },
+      content: {
+        surfboard: "url('/surfboard.svg')",
+        waves: "url('/waves.svg')",
+      },
+      animation: {
+        wave: "wave 6s ease-in-out infinite",
+        bubble: "bubble 4s ease-in infinite",
+      },
+      keyframes: {
+        wave: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(-10px)" },
+        },
+        bubble: {
+          "0%": { transform: "translateY(0)", opacity: 1 },
+          "100%": { transform: "translateY(-100px)", opacity: 0 },
+        },
+      },
     },
   },
   plugins: [],
