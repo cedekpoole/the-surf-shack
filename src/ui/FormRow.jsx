@@ -4,12 +4,18 @@ FormRow.propTypes = {
   label: PropTypes.string,
   error: PropTypes.string,
   children: PropTypes.node,
+  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
 };
 
-function FormRow({ label, error, children }) {
+function FormRow({ label, error, children, orientation = "horizontal" }) {
+  const vertical = orientation === "vertical";
   return (
     <div
-      className={`grid items-center gap-6 py-3 grid-cols-[24rem_1fr_1.2fr] border-b border-[#374151] last:border-0`}
+      className={`grid items-center ${
+        vertical
+          ? "grid-cols-1 gap-3"
+          : "gap-6 py-3 grid-cols-[24rem_1fr_1.2fr] border-b border-[#374151] last:border-0"
+      }`}
     >
       {label && (
         <label htmlFor={children.props.id} className="font-medium">
