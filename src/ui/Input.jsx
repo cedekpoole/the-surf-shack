@@ -59,7 +59,7 @@ const Input = forwardRef(
 );
 
 Input.propTypes = {
-  type: PropTypes.oneOf(["text", "number", "file"]),
+  type: PropTypes.oneOf(["text", "number", "password", "email", "file"]),
   id: PropTypes.string,
   defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
