@@ -1,3 +1,4 @@
+import Logout from "../features/authentication/Logout";
 import Logo from "./Logo";
 
 function Header() {
@@ -5,7 +6,7 @@ function Header() {
     <header className="col-span-2 shadow-lg">
       <div className="flex items-center justify-between mx-10">
         <Logo />
-        <h1>App Layout</h1>
+        <Logout />
       </div>
     </header>
   );
