@@ -3,13 +3,20 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import { useSignup } from "./useSignup";
 
 function SignupForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
+  const { signup, loading } = useSignup();
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ fullName, email, password }) {
+    signup(
+      { fullName, email, password },
+      {
+        onSettled: () => reset(),
+      }
+    );
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -17,6 +24,7 @@ function SignupForm() {
         <Input
           type="text"
           id="fullName"
+          disabled={loading}
           {...register("fullName", { required: "This field is required" })}
         />
       </FormRow>
@@ -24,6 +32,7 @@ function SignupForm() {
         <Input
           type="email"
           id="email"
+          disabled={loading}
           {...register("email", {
             required: "This field is required",
             pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
@@ -37,6 +46,7 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={loading}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -50,6 +60,7 @@ function SignupForm() {
         <Input
           type="password"
           id="passwordConfirm"
+          disabled={loading}
           {...register("passwordConfirm", {
             required: "This field is required",
             validate: (value) =>
@@ -58,10 +69,10 @@ function SignupForm() {
         />
       </FormRow>
       <FormRow>
-        <Button type="submit" style="primary">
+        <Button type="submit" style="primary" disabled={loading}>
           Sign up new user
         </Button>
-        <Button type="reset" style="secondary">
+        <Button type="reset" style="secondary" disabled={loading}>
           Cancel
         </Button>
       </FormRow>
