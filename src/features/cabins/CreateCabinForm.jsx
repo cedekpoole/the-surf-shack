@@ -65,7 +65,7 @@ function CreateCabinForm({ cabin = {}, onCloseModal }) {
   }
 
   return (
-    <Form type="modal" onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form type="large" onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="Name" error={errors?.name?.message}>
         <Input
           id="name"

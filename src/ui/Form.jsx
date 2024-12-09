@@ -12,7 +12,7 @@ function Form({ children, onSubmit, type }) {
       onSubmit={onSubmit}
       type={type}
       className={`text-md border-[1px] border-[#374151] shadow-md px-3 rounded-md ${
-        type === "modal" ? "w-[60rem]" : "w-[40rem]"
+        type === "large" ? "w-[60rem]" : "w-[40rem]"
       }`}
     >
       {children}
