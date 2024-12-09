@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-PageHeader.propTypes = {
+PageContainer.propTypes = {
   children: PropTypes.node,
   header: PropTypes.string,
   operation: PropTypes.node,
 };
 
-function PageHeader({ children, header, operation }) {
+function PageContainer({ children, header, operation }) {
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center mb-5">
@@ -18,4 +18,4 @@ function PageHeader({ children, header, operation }) {
   );
 }
 
-export default PageHeader;
+export default PageContainer;
