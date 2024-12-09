@@ -3,11 +3,12 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import { login } from "../../services/apiAuth";
+import { useLogin } from "./useLogin";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, loading } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,8 +38,8 @@ function LoginForm() {
           />
         </FormRow>
         <FormRow orientation="vertical">
-          <Button type="submit" className="btn-primary">
-            Log In
+          <Button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? "Loading..." : "Log in"}
           </Button>
         </FormRow>
       </Form>
