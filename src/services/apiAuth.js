@@ -23,3 +23,8 @@ export async function getCurrentUser() {
   if (userError) throw new Error(userError.message);
   return user?.user;
 }
+
+export async function logout() {
+  let { error } = await supabase.auth.signOut();
+  if (error) throw new Error("Logout failed");
+}
