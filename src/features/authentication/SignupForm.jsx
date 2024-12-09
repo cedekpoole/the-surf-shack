@@ -5,10 +5,14 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 
 function SignupForm() {
-  const { register, formState } = useForm();
+  const { register, formState, getValues, handleSubmit } = useForm();
   const { errors } = formState;
+
+  function onSubmit(data) {
+    console.log(data);
+  }
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
@@ -20,7 +24,10 @@ function SignupForm() {
         <Input
           type="email"
           id="email"
-          {...register("email", { required: "This field is required" })}
+          {...register("email", {
+            required: "This field is required",
+            pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
+          })}
         />
       </FormRow>
       <FormRow
@@ -30,7 +37,13 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
-          {...register("password", { required: "This field is required" })}
+          {...register("password", {
+            required: "This field is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long",
+            },
+          })}
         />
       </FormRow>
       <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
@@ -39,6 +52,8 @@ function SignupForm() {
           id="passwordConfirm"
           {...register("passwordConfirm", {
             required: "This field is required",
+            validate: (value) =>
+              value === getValues().password || "Passwords do not match",
           })}
         />
       </FormRow>

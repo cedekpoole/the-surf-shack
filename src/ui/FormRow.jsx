@@ -23,7 +23,9 @@ function FormRow({ label, error, children, orientation = "horizontal" }) {
         </label>
       )}
       {children}
-      {error && <span className="text-sm text-secondary-dark">{error}</span>}
+      {error && (
+        <span className="text-sm text-secondary-dark min-w-48">{error}</span>
+      )}
     </div>
   );
 }
