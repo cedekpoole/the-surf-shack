@@ -61,7 +61,7 @@ const Input = forwardRef(
 Input.propTypes = {
   type: PropTypes.oneOf(["text", "number", "password", "email", "file"]),
   id: PropTypes.string,
-  defaultValue: PropTypes.number,
+  defaultValue: PropTypes.string || PropTypes.number,
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["input", "textarea"]),
   onBlur: PropTypes.func,
