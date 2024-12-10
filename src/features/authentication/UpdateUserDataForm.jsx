@@ -22,7 +22,15 @@ function UpdateUserDataForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!fullName) return;
-    updateUser({ fullName, avatar });
+    updateUser(
+      { fullName, avatar },
+      {
+        onSuccess: () => {
+          setAvatar(null);
+          e.target.reset();
+        },
+      }
+    );
   }
 
   function handleCancel() {
@@ -41,6 +49,7 @@ function UpdateUserDataForm() {
           id="fullName"
           onChange={(e) => setFullName(e.target.value)}
           disabled={isUpdating}
+          defaultValue={fullName}
         />
       </FormRow>
       <FormRow label="Avatar image">
