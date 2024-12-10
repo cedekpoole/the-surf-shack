@@ -6,9 +6,10 @@ function Account() {
   return (
     <>
       <PageContainer header="Update your account">
-        <h1 className="text-2xl">Update user data</h1>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-5">
+          <h1 className="text-2xl">Update user data</h1>
           <UpdateUserDataForm />
+          <h1 className="text-2xl">Update password</h1>
           <UpdatePasswordForm />
         </div>
       </PageContainer>
