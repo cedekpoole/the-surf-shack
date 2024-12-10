@@ -72,7 +72,12 @@ function SignupForm() {
         <Button type="submit" style="primary" disabled={loading}>
           Sign up new user
         </Button>
-        <Button type="reset" style="secondary" disabled={loading}>
+        <Button
+          type="reset"
+          style="secondary"
+          disabled={loading}
+          onClick={reset}
+        >
           Cancel
         </Button>
       </FormRow>
