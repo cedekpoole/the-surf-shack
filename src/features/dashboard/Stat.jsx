@@ -9,7 +9,7 @@ Stat.propTypes = {
 
 function Stat({ icon, title, value, color }) {
   return (
-    <div className="p-6 grid grid-cols-[4.3rem_1fr] grid-rows-[auto_auto] gap-x-4 gap-y-1 rounded-lg shadow-md bg-[#34434D]">
+    <div className="p-5 grid grid-cols-[4rem_1fr] grid-rows-[auto_auto] gap-x-4 gap-y-1 rounded-lg shadow-md bg-[#34434D]">
       <div
         className={`row-span-2 flex items-center justify-center aspect-square rounded-full bg-${color}-100`}
       >
