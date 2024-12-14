@@ -5,7 +5,7 @@ import Stats from "./Stats";
 import { useCabins } from "../cabins/useCabins";
 
 function DashboardLayout() {
-  const { bookings, isLoading1 } = useRecentBookings();
+  const { bookings, isLoading: isLoading1 } = useRecentBookings();
   const { cabins, loading } = useCabins();
   const cabinCount = cabins?.length || 0;
 
