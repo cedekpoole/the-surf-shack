@@ -7,6 +7,8 @@ import { formatCurrency } from "../../utils/helpers";
 Stats.propTypes = {
   bookings: PropTypes.array,
   confirmedStays: PropTypes.array,
+  numDays: PropTypes.number,
+  cabinCount: PropTypes.number,
 };
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
