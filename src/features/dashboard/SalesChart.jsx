@@ -48,15 +48,36 @@ SalesChart.propTypes = {
 
 function SalesChart({ bookings, numDays }) {
   return (
-    <div className="col-span-full">
-      <h1 className="text-2xl font-semibold mb-5 tracking-wide">Sales</h1>
+    <div className="col-span-full py-4 pr-3 pl-1 bg-[#34434D] rounded-md">
+      <h1 className="text-2xl font-semibold mb-5 tracking-wide pl-4">Sales</h1>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={fakeData}>
-          <XAxis dataKey="label" tick={{ fill: "#f1f1f1" }} />
-          <YAxis unit="$" tick={{ fill: "#f1f1f1" }} />
-          <CartesianGrid strokeDasharray="" stroke="gray" />
-          <Tooltip />
-          <Area dataKey="totalSales" type="monotone" />
+          <XAxis
+            dataKey="label"
+            tick={{ fill: "#f1f1f1" }}
+            tickLine={{ stroke: "#f1f1f1" }}
+          />
+          <YAxis
+            unit="£"
+            tick={{ fill: "#f1f1f1" }}
+            tickLine={{ stroke: "#f1f1f1" }}
+          />
+          <CartesianGrid strokeDasharray="4" stroke="gray" />
+          <Tooltip contentStyle={{ backgroundColor: "#34434D" }} />
+          <Area
+            dataKey="totalSales"
+            type="monotone"
+            strokeWidth={2}
+            name="Total Sales"
+            unit="£"
+          />
+          <Area
+            dataKey="extrasSales"
+            type="monotone"
+            strokeWidth={2}
+            name="Extras Sales"
+            unit="£"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>
