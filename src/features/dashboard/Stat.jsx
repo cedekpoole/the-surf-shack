@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 
 Stat.propTypes = {
   icon: PropTypes.node,
-  title: PropTypes.string,
-  value: PropTypes.string,
-  color: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 function Stat({ icon, title, value, color }) {
