@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
-import { AreaChart } from "recharts";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const fakeData = [
   { label: "Jan 09", totalSales: 480, extrasSales: 320 - 300 },
@@ -41,8 +49,16 @@ SalesChart.propTypes = {
 function SalesChart({ bookings, numDays }) {
   return (
     <div className="col-span-full">
-      <h1 className="text-xl">Sales</h1>
-      <AreaChart data={fakeData}></AreaChart>
+      <h1 className="text-2xl font-semibold mb-5 tracking-wide">Sales</h1>
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={fakeData}>
+          <XAxis dataKey="label" tick={{ fill: "#f1f1f1" }} />
+          <YAxis unit="$" tick={{ fill: "#f1f1f1" }} />
+          <CartesianGrid strokeDasharray="" stroke="gray" />
+          <Tooltip />
+          <Area dataKey="totalSales" type="monotone" />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
 }
