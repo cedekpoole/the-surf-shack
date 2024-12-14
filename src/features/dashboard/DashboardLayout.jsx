@@ -1,6 +1,7 @@
 import { useRecentBookings } from "./useRecentBookings";
 import Spinner from "../../ui/Spinner";
 import { useRecentStays } from "./useRecentStays";
+import Stats from "./Stats";
 
 function DashboardLayout() {
   const { bookings, isLoading1 } = useRecentBookings();
@@ -10,7 +11,7 @@ function DashboardLayout() {
 
   return (
     <div className="grid grid-cols-4 grid-rows-[auto_20rem_auto] gap-10">
-      <div>Statistics</div>
+      <Stats bookings={bookings} confirmedStays={confirmedStays} />
       <div>Today&apos;s activities</div>
       <div>Chart stay durations</div>
       <div>Chart revenue</div>
