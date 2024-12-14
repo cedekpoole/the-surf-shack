@@ -77,6 +77,8 @@ function SalesChart({ bookings, numDays }) {
             strokeWidth={2}
             name="Extras Sales"
             unit="£"
+            fill="#F4BBAF"
+            stroke="#EFAE9D"
           />
         </AreaChart>
       </ResponsiveContainer>
