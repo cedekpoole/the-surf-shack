@@ -34,8 +34,11 @@ function SalesChart({ bookings, numDays }) {
   });
 
   return (
-    <div className="col-span-full py-4 pr-3 pl-1 bg-[#34434D] rounded-md">
-      <h1 className="text-2xl font-semibold mb-5 tracking-wide pl-4">Sales</h1>
+    <div className="col-span-full py-4 pr-3 pl-2 bg-[#34434D] rounded-md">
+      <h1 className="text-2xl font-semibold mb-5 tracking-wide pl-4">
+        Sales from {format(allDates.at(0), "dd MMM yyyy")} &mdash;{" "}
+        {format(allDates.at(-1), "dd MMM yyyy")}
+      </h1>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           <XAxis
