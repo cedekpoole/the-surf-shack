@@ -1,6 +1,5 @@
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 import {
   Area,
   AreaChart,
